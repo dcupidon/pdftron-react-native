@@ -421,7 +421,6 @@ export module Config {
   export type ExportFormat = ValueOf<typeof Config.ExportFormat>;
   export type AnnotationManagerEditMode = ValueOf<typeof Config.AnnotationManagerEditMode>;
   export type AnnotationManagerUndoMode = ValueOf<typeof Config.AnnotationManagerUndoMode>;
-  export type FakeProperty = ValueOf<typeof Config.FakeProperty>;
   export type CustomToolbarKey = {
     id : string;
     name: string;
