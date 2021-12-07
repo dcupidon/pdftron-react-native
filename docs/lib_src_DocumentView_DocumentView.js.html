@@ -1,4 +1,87 @@
-import React, { PureComponent } from 'react';
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>PDFTron React Native Source: lib/src/DocumentView/DocumentView.js</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.pdftron.css">
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.css" />
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top ">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">PDFTron React Native</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="Config.html">Config</a></li><li><a href="DocumentView.html">DocumentView</a></li><li><a href="RNPdftron.html">RNPdftron</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="events.list.html" class="dropdown-toggle" data-toggle="dropdown">Events<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="DocumentView.html#.event:onAnnotationMenuPress">onAnnotationMenuPress</a></li><li><a href="DocumentView.html#.event:onAnnotationsSelected">onAnnotationsSelected</a></li><li><a href="DocumentView.html#.event:onAnnotationChanged">onAnnotationChanged</a></li><li><a href="DocumentView.html#.event:onFormFieldValueChanged">onFormFieldValueChanged</a></li><li><a href="DocumentView.html#.event:onAnnotationFlattened">onAnnotationFlattened</a></li><li><a href="DocumentView.html#.event:onBookmarkChanged">onBookmarkChanged</a></li><li><a href="DocumentView.html#.event:onBehaviorActivated">onBehaviorActivated</a></li><li><a href="DocumentView.html#.event:onExportAnnotationCommand">onExportAnnotationCommand</a></li><li><a href="DocumentView.html#.event:onLayoutChanged">onLayoutChanged</a></li><li><a href="DocumentView.html#.event:onLongPressMenuPress">onLongPressMenuPress</a></li><li><a href="DocumentView.html#.event:onTabChanged">onTabChanged</a></li><li><a href="DocumentView.html#.event:onDocumentLoaded">onDocumentLoaded</a></li><li><a href="DocumentView.html#.event:onDocumentError">onDocumentError</a></li><li><a href="DocumentView.html#.event:onPageChanged">onPageChanged</a></li><li><a href="DocumentView.html#.event:onPageMoved">onPageMoved</a></li><li><a href="DocumentView.html#.event:onScrollChanged">onScrollChanged</a></li><li><a href="DocumentView.html#.event:onTextSearchStart">onTextSearchStart</a></li><li><a href="DocumentView.html#.event:onTextSearchResult">onTextSearchResult</a></li><li><a href="DocumentView.html#.event:onLeadingNavButtonPressed">onLeadingNavButtonPressed</a></li><li><a href="DocumentView.html#.event:onToolChanged">onToolChanged</a></li><li><a href="DocumentView.html#.event:onUndoRedoStateChanged">onUndoRedoStateChanged</a></li><li><a href="DocumentView.html#.event:onZoomChanged">onZoomChanged</a></li><li><a href="DocumentView.html#.event:onZoomFinished">onZoomFinished</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3" style="align-items: center; justify-content: center">
+                <form class="navbar-form" role="search">
+                    <div class="input-group search-with-icon">	
+											<i class="glyphicon glyphicon-search"></i>				
+											<input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+											
+                        <!-- <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"></button>
+												</div> -->
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-12">
+	
+		<div id="main">
+			
+
+		<h1 class="page-title">Source: lib/src/DocumentView/DocumentView.js</h1>
+    
+<section>
+    <article>
+        <pre
+            class="sunlight-highlight-javascript linenums">import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import { requireNativeComponent, ViewPropTypes, Platform, Alert, NativeModules, findNodeHandle } from 'react-native';
 import { Config } from "../Config/Config";
@@ -26,7 +109,7 @@ export const DocumentViewPropTypes = {
      * @type {string}
      * @desc The path or url to the document. Required.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   document={'https://pdftron.s3.amazonaws.com/downloads/pl/PDFTRON_about.pdf'}
      * />
      */
@@ -38,7 +121,7 @@ export const DocumentViewPropTypes = {
      * @optional
      * @desc The password of the document, if any.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   password={'password'}
      * />
      */
@@ -51,7 +134,7 @@ export const DocumentViewPropTypes = {
      * @desc Defines the initial page number that viewer displays when the document is opened.
      * Note that page numbers are 1-indexed.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   initialPageNumber={5}
      * />
      */
@@ -65,7 +148,7 @@ export const DocumentViewPropTypes = {
      * Different from {@link DocumentView.initialPageNumber initialPageNumber},
      * changing this prop value at runtime will change the page accordingly.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   pageNumber={5}
      * />
      */
@@ -77,7 +160,7 @@ export const DocumentViewPropTypes = {
      * @optional
      * @desc Defines custom headers to use with HTTP/HTTPS requests.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   customHeaders={{headerKey: 'headerValue'}}
      * />
      */
@@ -98,8 +181,8 @@ export const DocumentViewPropTypes = {
      * For details about supported file types and potential compression, check out
      * [here](https://developer.android.com/guide/topics/graphics/drawables#drawables-from-images).
      *
-     * <img alt='demo-android' src='https://pdftron.s3.amazonaws.com/custom/websitefiles/react-native/android_add_resources.png'/>
-     * <br/><br/>
+     * &lt;img alt='demo-android' src='https://pdftron.s3.amazonaws.com/custom/websitefiles/react-native/android_add_resources.png'/>
+     * &lt;br/>&lt;br/>
      * 2. Now you can use the image in the viewer.
      * For example, if you add `button_close.png` to drawable,
      * you could use `'button_close'` in leadingNavButtonIcon.
@@ -115,8 +198,8 @@ export const DocumentViewPropTypes = {
      * - "Copy Bundle Resources"
      * - "+".
      *
-     * <img alt='demo-ios' src='https://pdftron.s3.amazonaws.com/custom/websitefiles/react-native/ios_add_resources.png'/>
-     * <br/><br/>
+     * &lt;img alt='demo-ios' src='https://pdftron.s3.amazonaws.com/custom/websitefiles/react-native/ios_add_resources.png'/>
+     * &lt;br/>&lt;br/>
      * 2. Now you can use the image in the viewer.
      * For example, if you add `button_open.png` to the bundle,
      * you could use `'button_open.png'` in leadingNavButtonIcon.
@@ -124,7 +207,7 @@ export const DocumentViewPropTypes = {
      * @example
      * let iosNav = 'ic_close_black_24px.png';
      * let androidNav = 'ic_arrow_back_white_24dp';
-     * <DocumentView
+     * &lt;DocumentView
      *   leadingNavButtonIcon={Platform.OS === 'ios' ? iosNav : androidNav}
      * />
      */
@@ -137,7 +220,7 @@ export const DocumentViewPropTypes = {
      * @default true
      * @desc Defines whether to show the leading navigation button.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   showLeadingNavButton={true}
      * />
      */
@@ -150,7 +233,7 @@ export const DocumentViewPropTypes = {
      * @optional
      * @desc This function is called when the leading navigation button is pressed.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   onLeadingNavButtonPressed = {() => {
      *       console.log('The leading nav has been pressed');
      *   }}
@@ -166,7 +249,7 @@ export const DocumentViewPropTypes = {
      * @desc This function is called when the document finishes loading.
      * @param {string} path
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   onDocumentLoaded = {(path) => {
      *     console.log('The document has finished loading:', path);
      *   }}
@@ -182,7 +265,7 @@ export const DocumentViewPropTypes = {
      * @desc This function is called when document opening encounters an error.
      * @param {string} error
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   onDocumentError = {(error) => {
      *     console.log('Error occured during document opening:', error);
      *   }}
@@ -199,7 +282,7 @@ export const DocumentViewPropTypes = {
      * @param {int} previousPageNumber the previous page number
      * @param {int} pageNumber the current page number
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   onPageChanged = {({previousPageNumber, pageNumber}) => {
      *     console.log('Page number changes from', previousPageNumber, 'to', pageNumber);
      *   }}
@@ -216,7 +299,7 @@ export const DocumentViewPropTypes = {
      * @param {number} horizontal the horizontal position of the scroll
      * @param {number} vertical the vertical position of the scroll
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   onScrollChanged = {({horizontal, vertical}) => {
      *     console.log('Current scroll position is', horizontal,
      *      'horizontally, and', vertical, 'vertically.');
@@ -233,7 +316,7 @@ export const DocumentViewPropTypes = {
      * @desc This function is called when the zoom scale has been changed.
      * @param {double} zoom the current zoom ratio of the document
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   onZoomChanged = {(zoom) => {
      *     console.log('Current zoom ratio is', zoom);
      *   }}
@@ -250,7 +333,7 @@ export const DocumentViewPropTypes = {
      * For example, if zoom via gesture, this is called on gesture release.
      * @param {double} zoom the current zoom ratio of the document
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   onZoomFinished = {(zoom) => {
      *     console.log('Current zoom ratio is', zoom);
      *   }}
@@ -264,7 +347,7 @@ export const DocumentViewPropTypes = {
      * @optional
      * @desc Zoom factor used to display the page content.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   zoom={1}
      * />
      */
@@ -277,7 +360,7 @@ export const DocumentViewPropTypes = {
      * @default Defaults to none.
      * @desc Defines buttons to be disabled for the viewer.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   disabledElements={[Config.Buttons.userBookmarkListButton]}
      * />
      */
@@ -290,7 +373,7 @@ export const DocumentViewPropTypes = {
      * @default Defaults to none.
      * @desc Defines tools to be disabled for the viewer.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   disabledTools={[Config.Tools.annotationCreateLine, Config.Tools.annotationCreateRectangle]}
      * />
      */
@@ -303,7 +386,7 @@ export const DocumentViewPropTypes = {
      * @default Contains all the items.
      * @desc Defines menu items that can show when long press on text or blank space.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   longPressMenuItems={[Config.LongPressMenu.copy, Config.LongPressMenu.read]}
      * />
      */
@@ -319,7 +402,7 @@ export const DocumentViewPropTypes = {
      * and the function {@link DocumentView.event:onLongPressMenuPress onLongPressMenuPress}
      * will be called where custom behavior can be implemented.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   overrideLongPressMenuBehavior={[Config.LongPressMenu.search]}
      * />
      */
@@ -335,7 +418,7 @@ export const DocumentViewPropTypes = {
      * @param {Config.LongPressMenu} longPressMenu the menu item that has been pressed.
      * @param {string} longPressText the selected text if pressed on text, empty otherwise
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   onLongPressMenuPress = {({longPressMenu, longPressText}) => {
      *     console.log('Long press menu item', longPressMenu, 'has been pressed');
      *     if (longPressText !== '') {
@@ -354,7 +437,7 @@ export const DocumentViewPropTypes = {
      * @desc Defines whether to show the popup menu of options
      *  when the user long presses on text or blank space on the document.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   longPressMenuEnabled={true}
      * />
      */
@@ -367,7 +450,7 @@ export const DocumentViewPropTypes = {
      * @default Contains all the items.
      * @desc Defines the menu items that can show when an annotation is selected.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   annotationMenuItems={[Config.AnnotationMenu.search, Config.AnnotationMenu.share]}
      * />
      */
@@ -383,7 +466,7 @@ export const DocumentViewPropTypes = {
      * and the function {@link DocumentView.event:onAnnotationMenuPress onAnnotationMenuPress}
      * will be called where custom behavior can be implemented.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   overrideAnnotationMenuBehavior={[Config.AnnotationMenu.copy]}
      * />
      */
@@ -407,7 +490,7 @@ export const DocumentViewPropTypes = {
      * Both rects are represented with
      * `{x1: number, y1: number, x2: number, y2: number, width: number, height: number}` objects.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   onAnnotationMenuPress = {({annotationMenu, annotations}) => {
      *     console.log('Annotation menu item', annotationMenu, 'has been pressed');
      *     annotations.forEach(annotation => {
@@ -429,7 +512,7 @@ export const DocumentViewPropTypes = {
      * @default Defaults to none.
      * @desc Defines annotation types that will not show in the annotation (long-press) menu.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   hideAnnotationMenu={[Config.Tools.annotationCreateArrow, Config.Tools.annotationEraserTool]}
      * />
      */
@@ -444,7 +527,7 @@ export const DocumentViewPropTypes = {
      * The function {@link DocumentView.event:onBehaviorActivated onBehaviorActivated} will be
      * called where custom behavior can be implemented, whenever the defined actions occur.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   overrideBehavior={[Config.Actions.linkPress]}
      * />
      */
@@ -471,7 +554,7 @@ export const DocumentViewPropTypes = {
      *
      * `screenRect` was formerly called `rect`.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   onBehaviorActivated = {({action, data}) => {
      *     console.log('Activated action is', action);
      *     if (action === Config.Actions.linkPress) {
@@ -500,7 +583,7 @@ export const DocumentViewPropTypes = {
      * @default true
      * @desc Defines whether the bottom toolbar of the viewer is enabled.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   bottomToolbarEnabled={false}
      * />
      */
@@ -515,7 +598,7 @@ export const DocumentViewPropTypes = {
      *  of the top and bottom toolbars. When false, the top and bottom toolbar visibility
      * will not be toggled and the page content will fit between the bars, if any.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   hideToolbarsOnTap={false}
      * />
      */
@@ -528,7 +611,7 @@ export const DocumentViewPropTypes = {
      * @default true
      * @desc Defines whether the document slider of the viewer is enabled.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   documentSliderEnabled={false}
      * />
      */
@@ -541,7 +624,7 @@ export const DocumentViewPropTypes = {
      * @default true
      * @desc Defines whether to show the page indicator for the viewer.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   pageIndicatorEnabled={true}
      * />
      */
@@ -556,7 +639,7 @@ export const DocumentViewPropTypes = {
      *
      * Defines whether the download dialog should be shown.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *    downloadDialogEnabled={true}
      * />
      */
@@ -571,7 +654,7 @@ export const DocumentViewPropTypes = {
      *
      * Defines whether the keyboard shortcuts of the viewer are enabled.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   keyboardShortcutsEnabled={false}
      * />
      */
@@ -593,7 +676,7 @@ export const DocumentViewPropTypes = {
      *
      * `screenRect` was formerly called `rect`.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   onAnnotationsSelected = {({annotations}) => {
      *     annotations.forEach(annotation => {
      *       console.log('The id of selected annotation is', annotation.id);
@@ -624,7 +707,7 @@ export const DocumentViewPropTypes = {
      *
      * `type` is one of the {@link Config.Tools} constants
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   onAnnotationChanged = {({action, annotations}) => {
      *     console.log('Annotation edit action is', action);
      *     annotations.forEach(annotation => {
@@ -647,7 +730,7 @@ export const DocumentViewPropTypes = {
      * `{fieldName: string, fieldType: string, fieldValue: any}`,
      * representing the fields that have been changed
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   onFormFieldValueChanged = {({fields}) => {
      *     fields.forEach(field => {
      *       console.log('The name of the changed field is', field.fieldName);
@@ -674,7 +757,7 @@ export const DocumentViewPropTypes = {
      *
      * `id` returned via the event listener can be null.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   onAnnotationFlattened={({annotations}) => {
           annotations.forEach(annotation => {
             console.log('The id of changed annotation is', annotation.id);
@@ -694,7 +777,7 @@ export const DocumentViewPropTypes = {
      * @desc Defines whether the viewer is read-only.
      * If true, the UI will not allow the user to change the document.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   readOnly={true}
      * />
      */
@@ -708,7 +791,7 @@ export const DocumentViewPropTypes = {
      * @desc Defines whether user can modify the document
      * using the thumbnail view (eg add/remove/rotate pages).
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   thumbnailViewEditingEnabled={true}
      * />
      */
@@ -721,7 +804,7 @@ export const DocumentViewPropTypes = {
      * @default Config.FitMode.FitWidth
      * @desc Defines the fit mode (default zoom level) of the viewer.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   fitMode={Config.FitMode.FitPage}
      * />
      */
@@ -734,7 +817,7 @@ export const DocumentViewPropTypes = {
      * @default Config.LayoutMode.Continuous
      * @desc Defines the layout mode of the viewer.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   layoutMode={Config.LayoutMode.FacingContinuous}
      * />
      */
@@ -747,7 +830,7 @@ export const DocumentViewPropTypes = {
      * @optional
      * @desc This function is called when the layout of the viewer has been changed.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   onLayoutChanged = {() => {
      *     console.log('Layout has been updated.');
      *   }}
@@ -764,7 +847,7 @@ export const DocumentViewPropTypes = {
      *
      * Defines whether the viewer will add padding to take account of the system status bar.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   padStatusBar={true}
      * />
      */
@@ -778,7 +861,7 @@ export const DocumentViewPropTypes = {
      * @desc If true, the active annotation creation tool will remain in the current annotation
      * creation tool. Otherwise, it will revert to the "pan tool" after an annotation is created.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   continuousAnnotationEditing={true}
      * />
      */
@@ -792,7 +875,7 @@ export const DocumentViewPropTypes = {
      * @desc Defines whether an annotation is selected after it is created.
      * On iOS, this functions for shape and text markup annotations only.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   selectAnnotationAfterCreation={true}
      * />
      */
@@ -805,7 +888,7 @@ export const DocumentViewPropTypes = {
      * @desc Defines the author name for all annotations created on the current document.
      * Exported xfdfCommand will include this piece of information.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   annotationAuthor={'PDFTron'}
      * />
      */
@@ -818,7 +901,7 @@ export const DocumentViewPropTypes = {
      * @default true
      * @desc Defines whether to show saved signatures for re-use when using the signing tool.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   showSavedSignatures={true}
      * />
      */
@@ -836,7 +919,7 @@ export const DocumentViewPropTypes = {
      * When viewing a document initialized with a base64 string (i.e. a memory buffer),
      * a temporary file is created on Android and iOS.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   isBase64String={true}
      *   document={'...'} // base 64 string
      * />
@@ -852,7 +935,7 @@ export const DocumentViewPropTypes = {
      * If true then {@link DocumentView.currentUser currentUser} must be set as well for
      * collaboration mode to work. Feature set may vary between local and collaboration mode.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   collabEnabled={true}
      *   currentUser={'Pdftron'}
      * />
@@ -867,7 +950,7 @@ export const DocumentViewPropTypes = {
      * Defines the current user.
      * Created annotations will have their title (author) set to this string.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   collabEnabled={true}
      *   currentUser={'Pdftron'}
      * />
@@ -885,7 +968,7 @@ export const DocumentViewPropTypes = {
      * (in the case that {@link DocumentView.currentUser currentUser} is an ID rather than a
      * human-friendly name.)
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   collabEnabled={true}
      *   currentUser={'Pdftron'}
      *   currentUserName={'Hello_World'}
@@ -916,7 +999,7 @@ export const DocumentViewPropTypes = {
      *
      * `type` is one of the {@link Config.Tools} constants.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   onExportAnnotationCommand = {({action, xfdfCommand, annotations}) => {
      *     console.log('Annotation edit action is', action);
      *     console.log('The exported xfdfCommand is', xfdfCommand);
@@ -940,7 +1023,7 @@ export const DocumentViewPropTypes = {
      * @default true
      * @desc Defines whether document is automatically saved by the viewer.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   autoSaveEnabled={true}
      * />
      */
@@ -954,7 +1037,7 @@ export const DocumentViewPropTypes = {
      * @desc Defines whether the viewer should change pages when the user taps the edge of a page,
      * when the viewer is in a horizontal viewing mode.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   pageChangeOnTap={true}
      * />
      */
@@ -969,7 +1052,7 @@ export const DocumentViewPropTypes = {
      * Defines whether the UI will appear in a dark color when the system is dark mode.
      * If false, it will use viewer setting instead.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   followSystemDarkMode={false}
      * />
      */
@@ -982,7 +1065,7 @@ export const DocumentViewPropTypes = {
      * @desc Defines whether a stylus should act as a pen when in pan mode.
      * If false, it will act as a finger.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   useStylusAsPen={true}
      * />
      */
@@ -998,7 +1081,7 @@ export const DocumentViewPropTypes = {
      * {@link DocumentView.document document} prop value will cause a new tab
      * to be opened with the associated file.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   multiTabEnabled={true}
      * />
      */
@@ -1011,7 +1094,7 @@ export const DocumentViewPropTypes = {
      * @default the file name
      * @desc Set the tab title if {@link DocumentView.multiTabEnabled multiTabEnabled} is true.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   multiTabEnabled={true}
      *   tabTitle={'tab1'}
      * />
@@ -1026,7 +1109,7 @@ export const DocumentViewPropTypes = {
      * @desc Sets the limit on the maximum number of tabs that the viewer could have at a time.
      * Open more documents after reaching this limit will overwrite the old tabs.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   multiTabEnabled={true}
      *   maxTabCount={5}
      * />
@@ -1042,7 +1125,7 @@ export const DocumentViewPropTypes = {
      * Defines whether signature fields will be signed with image stamps.
      * This is useful if you are saving XFDF to remote source.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   signSignatureFieldsWithStamps={true}
      * />
      */
@@ -1056,7 +1139,7 @@ export const DocumentViewPropTypes = {
      * @desc Defines whether an annotation's permission flags will be respected when it is selected.
      * For example, a locked annotation can not be resized or moved.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   annotationPermissionCheckEnabled={true}
      * />
      */
@@ -1080,7 +1163,7 @@ export const DocumentViewPropTypes = {
      *      Config.Tools.annotationCreateCallout, Config.Buttons.undo]
      * };
      * ...
-     * <DocumentView
+     * &lt;DocumentView
      *   annotationToolbars={[Config.DefaultToolbars.Annotate, myToolbar]}
      * />
      */
@@ -1103,7 +1186,7 @@ export const DocumentViewPropTypes = {
      * Note that this prop should be used when
      * {@link DocumentView.annotationToolbars annotationToolbars} is not defined.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   hideDefaultAnnotationToolbars={[Config.DefaultToolbars.Annotate,
      *     Config.DefaultToolbars.Favorite]}
      * />
@@ -1119,7 +1202,7 @@ export const DocumentViewPropTypes = {
      * Customizes the right bar section of the top app nav bar.
      * If passed in, the default right bar section will not be used.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   topAppNavBarRightBar={[Config.Buttons.reflowButton, Config.Buttons.outlineListButton]}
      * />
      */
@@ -1134,7 +1217,7 @@ export const DocumentViewPropTypes = {
      *
      * Defines a custom bottom toolbar. If passed in, the default bottom toolbar will not be used.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   bottomToolbar={[Config.Buttons.reflowButton, Config.Buttons.outlineListButton]}
      * />
     */
@@ -1147,7 +1230,7 @@ export const DocumentViewPropTypes = {
      * @default false
      * @desc Defines whether to show the toolbar switcher in the top toolbar.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   hideAnnotationToolbarSwitcher={false}
      * />
      */
@@ -1160,7 +1243,7 @@ export const DocumentViewPropTypes = {
      * @default false
      * @desc Defines whether to hide both the top app nav bar and the annotation toolbar.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   hideTopToolbars={false}
      * />
      */
@@ -1173,7 +1256,7 @@ export const DocumentViewPropTypes = {
      * @default false
      * @desc Defines whether to hide the top navigation app bar.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   hideTopAppNavBar={true}
      * />
      */
@@ -1187,7 +1270,7 @@ export const DocumentViewPropTypes = {
      * @desc This function is called if a change has been made to user bookmarks.
      * @param {string} bookmarkJson the list of current bookmarks in JSON format
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   onBookmarkChanged = {({bookmarkJson}) => {
      *     console.log('Bookmarks have been changed. Current bookmark collection is', bookmarkJson);
      *   }}
@@ -1201,7 +1284,7 @@ export const DocumentViewPropTypes = {
      * @optional
      * @desc Defines filter modes that should be hidden in the thumbnails browser.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   hideThumbnailFilterModes={[Config.ThumbnailFilterMode.Annotated]}
      * />
      */
@@ -1219,7 +1302,7 @@ export const DocumentViewPropTypes = {
      * @param {Config.Tools|string} tool the current tool (one of the {@link Config.Tools} constants
      * or "unknown tool"), representing the current tool
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   onToolChanged = {({previousTool, tool}) => {
      *     console.log('Tool has been changed from', previousTool, 'to', tool);
      *   }}
@@ -1233,7 +1316,7 @@ export const DocumentViewPropTypes = {
      * @optional
      * @desc Defines the horizontal scroll position in the current document viewer.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   horizontalScrollPos={50}
      * />
      */
@@ -1245,7 +1328,7 @@ export const DocumentViewPropTypes = {
      * @optional
      * @desc Defines the vertical scroll position in the current document viewer.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   verticalScrollPos={50}
      * />
      */
@@ -1259,7 +1342,7 @@ export const DocumentViewPropTypes = {
      * @desc This function is called immediately before a text search begins,
      * either through user actions, or function calls such as {@link DocumentView#findText findText}.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   onTextSearchStart = {() => {
      *     console.log('Text search has started');
      *   }}
@@ -1288,11 +1371,11 @@ export const DocumentViewPropTypes = {
      * The 4 points are in counter-clockwise order, though the first point is not guaranteed to be on
      * lower-left relatively to the box.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   onTextSearchResult = {({found, textSelection}) => {
      *     if (found) {
      *       console.log('Found selection on page', textSelection.pageNumber);
-     *       for (let i = 0; i < textSelection.quads.length; i ++) {
+     *       for (let i = 0; i &lt; textSelection.quads.length; i ++) {
      *         const quad = textSelection.quads[i];
      *         console.log('selection boundary quad', i);
      *         for (const quadPoint of quad) {
@@ -1312,7 +1395,7 @@ export const DocumentViewPropTypes = {
      * @default Defaults to none.
      * @desc Defines view mode items to be hidden in the view mode dialog.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   hideViewModeItems={[
      *     Config.ViewModePickerItem.Crop,
      *     Config.ViewModePickerItem.Rotation,
@@ -1333,7 +1416,7 @@ export const DocumentViewPropTypes = {
      *
      * Defines whether the page stack navigation buttons will appear in the viewer.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   pageStackEnabled={false}
      * />
      */
@@ -1346,7 +1429,7 @@ export const DocumentViewPropTypes = {
      * @default true
      * @desc Defines whether the quick navigation buttons will appear in the viewer.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   showQuickNavigationButton={false}
      * />
      */
@@ -1361,7 +1444,7 @@ export const DocumentViewPropTypes = {
      *
      * Defines whether to show the option to pick images in the signature dialog.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   photoPickerEnabled={true}
      * />
      */
@@ -1374,7 +1457,7 @@ export const DocumentViewPropTypes = {
      * @desc Defines whether to automatically resize the bounding box of free
      * text annotations when editing.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   autoResizeFreeTextEnabled={true}
      * />
      */
@@ -1388,7 +1471,7 @@ export const DocumentViewPropTypes = {
      * @desc If document editing is enabled, then this value determines
      * if the annotation list is editable.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   annotationsListEditingEnabled={true}
      * />
      */
@@ -1402,7 +1485,7 @@ export const DocumentViewPropTypes = {
      * @desc Defines whether the navigation list will be displayed as a side panel
      * on large devices such as iPads and tablets.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   showNavigationListAsSidePanelOnLargeDevices={true}
      * />
      */
@@ -1414,7 +1497,7 @@ export const DocumentViewPropTypes = {
      * @default false
      * @desc Defines whether to restrict data usage when viewing online PDFs.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   restrictDownloadUsage={true}
      * />
      */
@@ -1429,7 +1512,7 @@ export const DocumentViewPropTypes = {
      * If the viewer is readonly then bookmarks on Android are
      * still editable but are saved to the device rather than the PDF.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   userBookmarksListEditingEnabled={true}
      * />
      */
@@ -1444,7 +1527,7 @@ export const DocumentViewPropTypes = {
      *
      * Whether to show images in reflow mode.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   imageInReflowEnabled={false}
      * />
      */
@@ -1459,7 +1542,7 @@ export const DocumentViewPropTypes = {
      *
      * Sets the scrolling direction of the reflow control.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   reflowOrientation={Config.ReflowOrientation.Vertical}
      * />
      */
@@ -1473,7 +1556,7 @@ export const DocumentViewPropTypes = {
      * @desc This function is called when the state of the current document's
      * undo/redo stack has been changed.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   onUndoRedoStateChanged = {() => {
      *     console.log("Undo/redo stack state changed");
      *   }}
@@ -1491,7 +1574,7 @@ export const DocumentViewPropTypes = {
      * Defines whether the tablet layout should be used on tablets.
      * Otherwise uses the same layout as phones.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   tabletLayoutEnabled={true}
      * />
      */
@@ -1508,7 +1591,7 @@ export const DocumentViewPropTypes = {
      * Defines which {@link DocumentView.annotationToolbars annotationToolbar}
      * should be selected when the document is opened.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   initialToolbar={Config.DefaultToolbars.Draw}
      * />
      */
@@ -1522,7 +1605,7 @@ export const DocumentViewPropTypes = {
      * @desc If true, ink tool will use multi-stroke mode.
      * Otherwise, each stroke is a new ink annotation.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   inkMultiStrokeEnabled={true}
      * />
      */
@@ -1541,7 +1624,7 @@ export const DocumentViewPropTypes = {
      * `hybrideEraser` | Erases ink by pixel, but erases other annotation types as objects.
      * `inkEraser` | Erases ink by pixel only. Android only.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   defaultEraserType={Config.EraserType.hybrideEraser}
      * />
      */
@@ -1556,7 +1639,7 @@ export const DocumentViewPropTypes = {
      * Sets the folder path for all save options, this defaults to the app cache path.
      * Example:
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   exportPath="/data/data/com.example/cache/test"
      * />
      */
@@ -1571,7 +1654,7 @@ export const DocumentViewPropTypes = {
      * Sets the cache folder used to cache PDF files opened using a http/https link,
      * this defaults to the app cache path.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   openUrlPath="/data/data/com.example/cache/test"
      * />
      */
@@ -1584,7 +1667,7 @@ export const DocumentViewPropTypes = {
      * @default Defaults to none.
      * @desc Defines annotation types that cannot be edited after creation.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   disableEditingByAnnotationType={[Config.Tools.annotationCreateTextSquiggly,
      *     Config.Tools.annotationCreateEllipse]}
      * />
@@ -1600,7 +1683,7 @@ export const DocumentViewPropTypes = {
      *
      * Determines whether scrollbars will be hidden on the viewer.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   hideScrollbars={true}
      * />
      */
@@ -1614,7 +1697,7 @@ export const DocumentViewPropTypes = {
      * @desc Sets whether to remember the last visited page and zoom for a
      * document if it gets opened again.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   saveStateEnabled={false}
      * />
      */
@@ -1629,7 +1712,7 @@ export const DocumentViewPropTypes = {
      *
      * Sets whether the new saved file should open after saving.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   openSavedCopyInNewTab={false}
      * />
      */
@@ -1642,7 +1725,7 @@ export const DocumentViewPropTypes = {
      * @default Defaults to none.
      * @desc Defines types to be excluded from the annotation list.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   excludedAnnotationListTypes={[Config.Tools.annotationCreateEllipse,
      *     Config.Tools.annotationCreateRectangle,
      *     Config.Tools.annotationCreateRedaction]}
@@ -1659,7 +1742,7 @@ export const DocumentViewPropTypes = {
      *
      * Defines whether to show an annotation's reply review state.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   collabEnabled={true}
      *   currentUser={'Pdftron'}
      *   replyReviewStateEnabled={true}
@@ -1680,7 +1763,7 @@ export const DocumentViewPropTypes = {
      * `Config.AnnotationManagerEditMode.Own` | In this mode, you can edit only your own changes
      * `Config.AnnotationManagerEditMode.All` | In this mode, you can edit everyone's changes
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   collabEnabled={true}
      *   currentUser={'Pdftron'}
      *   annotationManagerEditMode={Config.AnnotationManagerEditMode.Own}
@@ -1701,7 +1784,7 @@ export const DocumentViewPropTypes = {
      * `Config.AnnotationManagerUndoMode.Own` | In this mode, you can undo only your own changes
      * `Config.AnnotationManagerUndoMode.All` | In this mode, you can undo everyone's changes
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   collabEnabled={true}
      *   currentUser={'Pdftron'}
      *   annotationManagerUndoMode={Config.AnnotationManagerUndoMode.Own}
@@ -1718,7 +1801,7 @@ export const DocumentViewPropTypes = {
      * @param {int} previousPageNumber the previous page number
      * @param {int} pageNumber the current page number
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   onPageMoved = {({previousPageNumber, pageNumber}) => {
      *     console.log('Page moved from', previousPageNumber, 'to', pageNumber);
      *   }}
@@ -1738,7 +1821,7 @@ export const DocumentViewPropTypes = {
      * the {@link DocumentView.event:onDocumentLoaded onDocumentLoaded} event.
      * @param {string} currentTab The file path of current tab's document
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   multiTabEnabled={true}
      *   onTabChanged={({currentTab}) => {
      *     console.log("The current tab is ", currentTab);
@@ -1757,7 +1840,7 @@ export const DocumentViewPropTypes = {
      * Defines whether the last tool used in the current viewer session will
      * be the tool selected upon starting a new viewer session.
      * @example
-     * <DocumentView
+     * &lt;DocumentView
      *   rememberLastUsedTool={true}
      * />
      */
@@ -1775,7 +1858,7 @@ export const DocumentViewPropTypes = {
      * @example
      * let iosButton = 'ic_close_black_24px.png';
      * let androidButton = 'ic_arrow_back_white_24dp';
-     * <DocumentView
+     * &lt;DocumentView
      *  overflowMenuButtonIcon={Platform.OS === 'ios' ? iosButton : androidButton}
      * />
      */
@@ -1787,14 +1870,14 @@ export const DocumentViewPropTypes = {
 *
 * If the resulting PropType is used to generate prop types for TS users,
 * type checking for function parameters and return values will be provided.
-* @returns {Requireable<T>} A custom PropType constant.
+* @returns {Requireable&lt;T>} A custom PropType constant.
 * @example
-* func<(path: string) => void>()
+* func&lt;(path: string) => void>()
 * @ignore
 */
 function func() {
     const validator = function (props, propName, componentName, location, propFullName) {
-        if (typeof props[propName] !== "function" && typeof props[propName] !== "undefined") {
+        if (typeof props[propName] !== "function" &amp;&amp; typeof props[propName] !== "undefined") {
             return new Error(`Invalid prop \`${propName}\` of type \`${typeof props[propName]}\` 
       supplied to \`${componentName}\`, expected a function.`);
         }
@@ -1808,10 +1891,10 @@ function func() {
  * Creates a custom PropType representing any value from given object(s).
  * @param {object} obj An object containing values.
  * @param {...object} rest Indefinite number of other objects containing values.
- * @returns {Requireable<T>} A custom PropType constant.
+ * @returns {Requireable&lt;T>} A custom PropType constant.
  * @example
- * oneOf<Config.Tools>(Config.Tools)
- * oneOf<Config.Tools | Config.Buttons>(Config.Tools, Config.Buttons)
+ * oneOf&lt;Config.Tools>(Config.Tools)
+ * oneOf&lt;Config.Tools | Config.Buttons>(Config.Tools, Config.Buttons)
  * @ignore
  */
 function oneOf(obj, ...rest) {
@@ -1824,10 +1907,10 @@ function oneOf(obj, ...rest) {
  * Creates a custom PropType representing any array containing values from given object(s).
  * @param {object} obj An object containing values.
  * @param {...object} rest Indefinite number of other objects containing values.
- * @returns {Requireable<T[]>} A custom PropType constant.
+ * @returns {Requireable&lt;T[]>} A custom PropType constant.
  * @example
- * arrayOf<Config.Tools>(Config.Tools)
- * arrayOf<Config.Tools | Config.Buttons>(Config.Tools, Config.Buttons)
+ * arrayOf&lt;Config.Tools>(Config.Tools)
+ * arrayOf&lt;Config.Tools | Config.Buttons>(Config.Tools, Config.Buttons)
  * @ignore
 */
 function arrayOf(obj, ...rest) {
@@ -2022,7 +2105,7 @@ export class DocumentView extends PureComponent {
      * If {@link DocumentView.isBase64String isBase64String} is true,
      * this would be the path to the temporary pdf file converted from
      * the base64 string in {@link DocumentView.document document}.
-     * @returns {Promise<void | string>} path - the document path.
+     * @returns {Promise&lt;void | string>} path - the document path.
      * @example
      * this._viewer.getDocumentPath().then((path) => {
      *   console.log('The path to current document is: ' + path);
@@ -2040,7 +2123,7 @@ export class DocumentView extends PureComponent {
      * @category Annotation Tools
      * @desc Sets the current tool mode.
      * @param {Config.Tools} toolMode the tool mode to set.
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.setToolMode(Config.Tools.annotationCreateFreeHand).then(() => {
      *   // done switching tools
@@ -2057,7 +2140,7 @@ export class DocumentView extends PureComponent {
      * @method
      * @category Annotation Tools
      * @desc Commits the current tool, only available for multi-stroke ink and poly-shape.
-     * @returns {Promise<void | boolean>} committed - true if either ink or poly-shape tool is
+     * @returns {Promise&lt;void | boolean>} committed - true if either ink or poly-shape tool is
      * committed, false otherwise
      * @example
      * this._viewer.commitTool().then((committed) => {
@@ -2075,7 +2158,7 @@ export class DocumentView extends PureComponent {
      * @method
      * @category Page
      * @desc Gets the current page count of the document.
-     * @returns {Promise<void | number>} pageCount - the current page count of the document
+     * @returns {Promise&lt;void | number>} pageCount - the current page count of the document
      * @example
      * this._viewer.getPageCount().then((pageCount) => {
      *   console.log('pageCount', pageCount);
@@ -2095,7 +2178,7 @@ export class DocumentView extends PureComponent {
      * The input needs to be a valid bookmark JSON format.
      * @param {string} bookmarkJson needs to be in valid bookmark JSON format,
      * for example {"0": "Page 1"}. The page numbers are 1-indexed
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.importBookmarkJson("{\"0\": \"Page 1\", \"3\": \"Page 4\"}");
      */
@@ -2111,7 +2194,7 @@ export class DocumentView extends PureComponent {
      * @category Bookmark
      * @desc Displays the bookmark tab of the existing list container.
      * If this tab has been disabled, the method does nothing.
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.openBookmarkList();
      */
@@ -2128,15 +2211,15 @@ export class DocumentView extends PureComponent {
      * @desc Imports remote annotation command to local document.
      * @param {string} xfdfCommand the XFDF command string
      * @param {boolean} [initialLoad=false] whether this is for initial load.
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
-     * const xfdfCommand = '<?xml version="1.0" encoding="UTF-8"?>' +
-     *  '<xfdf xmlns="http://ns.adobe.com/xfdf/" xml:space="preserve">' +
-     *  '<add><circle style="solid" width="5" color="#E44234" opacity="1" ' +
+     * const xfdfCommand = '&lt;?xml version="1.0" encoding="UTF-8"?>' +
+     *  '&lt;xfdf xmlns="http://ns.adobe.com/xfdf/" xml:space="preserve">' +
+     *  '&lt;add>&lt;circle style="solid" width="5" color="#E44234" opacity="1" ' +
      *  'creationdate="D:20201218025606Z" flags="print" date="D:20201218025606Z" ' +
      *  'name="9d0f2d63-a0cc-4f06-b786-58178c4bd2b1" page="0" ' +
-     *  'rect="56.4793,584.496,208.849,739.369" title="PDF" /></add><modify /><delete />' +
-     *  '<pdf-info import-version="3" version="2" xmlns="http://www.pdftron.com/pdfinfo" /></xfdf>';
+     *  'rect="56.4793,584.496,208.849,739.369" title="PDF" />&lt;/add>&lt;modify />&lt;delete />' +
+     *  '&lt;pdf-info import-version="3" version="2" xmlns="http://www.pdftron.com/pdfinfo" />&lt;/xfdf>';
      * this._viewer.importAnnotationCommand(xfdfCommand);
      */
     importAnnotationCommand = (xfdfCommand, initialLoad) => {
@@ -2154,15 +2237,15 @@ export class DocumentView extends PureComponent {
      * @category Import/Export Annotations
      * @desc Imports XFDF annotation string to the current document.
      * @param {string} xfdf annotation string in XFDF format for import
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
-     * const xfdf = '<?xml version="1.0" encoding="UTF-8"?>\n' +
-     *  '<xfdf xmlns="http://ns.adobe.com/xfdf/" xml:space="preserve">\n\t<annots>\n\t\t' +
-     *  '<circle style="solid" width="5" color="#E44234" opacity="1" ' +
+     * const xfdf = '&lt;?xml version="1.0" encoding="UTF-8"?>\n' +
+     *  '&lt;xfdf xmlns="http://ns.adobe.com/xfdf/" xml:space="preserve">\n\t&lt;annots>\n\t\t' +
+     *  '&lt;circle style="solid" width="5" color="#E44234" opacity="1" ' +
      *  'creationdate="D:20190729202215Z" flags="print" date="D:20190729202215Z" page="0" ' +
-     *  'rect="138.824,653.226,236.28,725.159" title="" /></annots>\n\t<pages>\n\t\t' +
-     *  '<defmtx matrix="1.333333,0.000000,0.000000,-1.333333,0.000000,1056.000000" />\n\t</pages>' +
-     *  '\n\t<pdf-info version="2" xmlns="http://www.pdftron.com/pdfinfo" />\n</xfdf>';
+     *  'rect="138.824,653.226,236.28,725.159" title="" />&lt;/annots>\n\t&lt;pages>\n\t\t' +
+     *  '&lt;defmtx matrix="1.333333,0.000000,0.000000,-1.333333,0.000000,1056.000000" />\n\t&lt;/pages>' +
+     *  '\n\t&lt;pdf-info version="2" xmlns="http://www.pdftron.com/pdfinfo" />\n&lt;/xfdf>';
      * this._viewer.importAnnotations(xfdf);
      */
     importAnnotations = (xfdf) => {
@@ -2179,12 +2262,12 @@ export class DocumentView extends PureComponent {
      * @param {object} options key: annotList, type: array.
      * If specified, annotations with the matching id and pageNumber will be exported;
      * otherwise, all annotations in the current document will be exported.
-     * @returns {Promise<void | string>} xfdf - annotation string in XFDF format
-     * @example <caption>Without options:</caption>
+     * @returns {Promise&lt;void | string>} xfdf - annotation string in XFDF format
+     * @example &lt;caption>Without options:&lt;/caption>
      * this._viewer.exportAnnotations().then((xfdf) => {
      *   console.log('XFDF for all annotations:', xfdf);
      * });
-     * @example <caption>With options:</caption>
+     * @example &lt;caption>With options:&lt;/caption>
      * // annotList is an array of annotation data in the format {id: string, pageNumber: int}
      * const annotations = [{id: 'annot1', pageNumber: 1}, {id: 'annot2', pageNumber: 3}];
      * this._viewer.exportAnnotations({annotList: annotations}).then((xfdf) => {
@@ -2204,7 +2287,7 @@ export class DocumentView extends PureComponent {
      * @desc Flattens the forms and (optionally) annotations in the current document.
      * @param {boolean} formsOnly Defines whether only forms are flattened.
      * If false, all annotations will be flattened.
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * // flatten forms and annotations in the current document.
      * this._viewer.flattenAnnotations(false);
@@ -2222,7 +2305,7 @@ export class DocumentView extends PureComponent {
      * @desc Deletes the specified annotations in the current document.
      * @param {object[]} annotations Defines which annotation to be deleted.
      * Each element is in the format {id: string, pageNumber: int}
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * // delete annotations in the current document.
      * this._viewer.deleteAnnotations([
@@ -2250,7 +2333,7 @@ export class DocumentView extends PureComponent {
      * If {@link DocumentView.isBase64String isBase64String} is true,
      * this would be the base64 string encoded from the temporary pdf file,
      * which is created from the base64 string in {@link DocumentView.document document}.
-     * @returns {Promise<void | string>} filePath - the location of the saved document,
+     * @returns {Promise&lt;void | string>} filePath - the location of the saved document,
      * or the base64 string of the pdf in the case of base64
      * @example
      * this._viewer.saveDocument().then((filePath) => {
@@ -2271,7 +2354,7 @@ export class DocumentView extends PureComponent {
      * @param {string[]} fields list of field names for which the flag should be set
      * @param {Config.FieldFlags} flag flag to be set
      * @param {boolean} value value to set for flag
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.setFlagForFields(['First Name', 'Last Name'], Config.FieldFlags.ReadOnly, true);
      */
@@ -2287,7 +2370,7 @@ export class DocumentView extends PureComponent {
      * @category Annotations
      * @desc Get type and value information of a field using its name.
      * @param {string} fieldName name of the field
-     * @returns {Promise<void | object>} field - an object with information keys:
+     * @returns {Promise&lt;void | object>} field - an object with information keys:
      * `fieldName`, `fieldValue` (undefined for fields with no values) and
      * `fieldType`(one of button, checkbox, radio, text, choice,  signature and unknown),
      * or undefined if such field does not exist
@@ -2313,7 +2396,7 @@ export class DocumentView extends PureComponent {
      * @category Annotations
      * @desc Displays the annotation tab of the existing list container.
      * If this tab has been disabled, the method does nothing.
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.openAnnotationList();
      */
@@ -2340,7 +2423,7 @@ export class DocumentView extends PureComponent {
      *
      * Note: the old function `setValueForFields` is deprecated. Please use this one instead.
      * @param {object} fieldsMap map of field names and values which should be set
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.setValuesForFields({
      *   'textField1': 'Test',
@@ -2362,7 +2445,7 @@ export class DocumentView extends PureComponent {
      * @method
      * @category Navigation
      * @desc Handles the back button in search mode. Android only.
-     * @returns {Promise<void | boolean>} handled - whether the back button is handled successfully
+     * @returns {Promise&lt;void | boolean>} handled - whether the back button is handled successfully
      * @example
      * this._viewer.handleBackButton().then((handled) => {
      *   if (!handled) {
@@ -2398,7 +2481,7 @@ export class DocumentView extends PureComponent {
      * Each element is in the format
      * `{id: string, pageNumber: int,
      * flag: One of {@link Config.AnnotationFlags} constants, flagValue: boolean}`
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * //  Set flag for annotations in the current document.
      * this._viewer.setFlagsForAnnotations([
@@ -2430,7 +2513,7 @@ export class DocumentView extends PureComponent {
      * @param {string} id the id of the target annotation
      * @param {integer} pageNumber the page number where the targe annotation is located.
      * It is 1-indexed.
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * // select annotation in the current document.
      * this._viewer.selectAnnotation('annotId1', 1);
@@ -2475,7 +2558,7 @@ export class DocumentView extends PureComponent {
      * customData | object | no | {key: value}
      * strokeColor | object | no | {red: 255, green: 0, blue: 0}
      *
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * // Set properties for annotation in the current document.
      * this._viewer.setPropertiesForAnnotation('Pdftron', 1, {
@@ -2514,7 +2597,7 @@ export class DocumentView extends PureComponent {
      *
      * @param {string} annotationId the unique id of the annotation
      * @param {integer} pageNumber the page number where annotation is located. It is 1-indexed
-     * @returns {Promise<void | object>} propertyMap - the non-null properties of the annotation
+     * @returns {Promise&lt;void | object>} propertyMap - the non-null properties of the annotation
      *
      * Name | Type | Markup exclusive | Example
      * --- | --- | --- | ---
@@ -2548,7 +2631,7 @@ export class DocumentView extends PureComponent {
      * Unlike {@link DocumentView#setVisibilityForAnnotation setVisibilityForAnnotation},
      * this method is used to show and hide all annotations and forms in the viewer.
      * @param {boolean} drawAnnotations whether all annotations and forms should be rendered
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.setDrawAnnotations(false);
      */
@@ -2570,7 +2653,7 @@ export class DocumentView extends PureComponent {
      * @param {string} annotationId the unique id of the annotation
      * @param {integer}pageNumber the page number where annotation is located. It is 1-indexed
      * @param {boolean }visibility whether the annotation should be visible
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.setVisibilityForAnnotation('Pdftron', 1, true);
      */
@@ -2608,7 +2691,7 @@ export class DocumentView extends PureComponent {
      * it is almost impossible to hit the actual line.
      * This specifies a minimum line thickness (in screen coordinates) for the purpose of calculating
      * whether a point is inside the annotation or not (in dp)
-     * @returns {Promise<void | object>} annotation - the annotation found in the format of
+     * @returns {Promise&lt;void | object>} annotation - the annotation found in the format of
      * `{id: string, pageNumber: number, type: string,
      * screenRect: {x1: number, y1: number, x2: number, y2: number, width: number, height: number},
      * pageRect: {x1: number, y1: number, x2: number, y2: number, width: number, height: number}}`.
@@ -2641,7 +2724,7 @@ export class DocumentView extends PureComponent {
      * @param {integer} y1 y-coordinate of an endpoint on the line
      * @param {integer} x2 x-coordinate of the other endpoint on the line, usually used as a threshold
      * @param {integer} y2 y-coordinate of the other endpoint on the line, usually used as a threshold
-     * @returns {Promise<void | object[]>} annotations - list of annotations at the target line,
+     * @returns {Promise&lt;void | object[]>} annotations - list of annotations at the target line,
      * each in the format of `{id: string, pageNumber: number, type: string,
      * screenRect: {x1: number, y1: number, x2: number, y2: number, width: number, height: number},
      * pageRect: {x1: number, y1: number, x2: number, y2: number, width: number, height: number}}`.
@@ -2668,7 +2751,7 @@ export class DocumentView extends PureComponent {
      * @category Annotations
      * @desc Gets the list of annotations on a given page.
      * @param {integer} pageNumber the page number where annotations are located. It is 1-indexed
-     * @returns {Promise<void | Array<object>>} annotations - list of annotations on the target page,
+     * @returns {Promise&lt;void | Array&lt;object>>} annotations - list of annotations on the target page,
      * each in the format of `{id: string, pageNumber: number, type: string,
      * screenRect: {x1: number, y1: number, x2: number, y2: number, width: number, height: number},
      * pageRect: {x1: number, y1: number, x2: number, y2: number, width: number, height: number}}`.
@@ -2697,7 +2780,7 @@ export class DocumentView extends PureComponent {
      * @param {string} annotationId the unique id of the annotation
      * @param {integer} pageNumber the page number where annotation is located. It is 1-indexed
      * @param {string} key the unique key associated with the `customData` property
-     * @returns {Promise<void | string>} value - the `customData` property associated
+     * @returns {Promise&lt;void | string>} value - the `customData` property associated
      * with the given key
      * @example
      * this._viewer.setPropertiesForAnnotation("annotation1", 2, {
@@ -2722,7 +2805,7 @@ export class DocumentView extends PureComponent {
      * @category Page
      * @desc Gets the crop box for specified page as a JSON object.
      * @param {integer} pageNumber the page number for the target crop box. It is 1-indexed
-     * @returns {Promise<void | object>} cropBox - an object with information about position
+     * @returns {Promise&lt;void | object>} cropBox - an object with information about position
      * (`x1`, `y1`, `x2` and `y2`) and size (`width` and `height`)
      * @example
      * this._viewer.getPageCropBox(1).then((cropBox) => {
@@ -2743,7 +2826,7 @@ export class DocumentView extends PureComponent {
      * @category Page
      * @desc Sets current page of the document.
      * @param {integer} pageNumber the page number to be set as the current page; 1-indexed
-     * @returns {Promise<void | boolean>} success - whether the setting process was successful
+     * @returns {Promise&lt;void | boolean>} success - whether the setting process was successful
      * @example
      * this._viewer.setCurrentPage(4).then((success) => {
      *   if (success) {
@@ -2762,7 +2845,7 @@ export class DocumentView extends PureComponent {
      * @method
      * @category Page
      * @desc Gets the visible pages in the current viewer as an array.
-     * @returns {Promise<void | Array<number>>} visiblePages - a list of visible pages in the
+     * @returns {Promise&lt;void | Array&lt;number>>} visiblePages - a list of visible pages in the
      * current viewer
      * @example
      * this._viewer.getVisiblePages().then((visiblePages) => {
@@ -2782,7 +2865,7 @@ export class DocumentView extends PureComponent {
      * @method
      * @category Page
      * @desc Go to the previous page of the document. If on first page, it will stay on first page.
-     * @returns {Promise<void | boolean>} success - whether the setting process was successful
+     * @returns {Promise&lt;void | boolean>} success - whether the setting process was successful
      * (no change due to staying in first page counts as being successful)
      * @example
      * this._viewer.gotoPreviousPage().then((success) => {
@@ -2802,7 +2885,7 @@ export class DocumentView extends PureComponent {
      * @method
      * @category Page
      * @desc Go to the next page of the document. If on last page, it will stay on last page.
-     * @returns {Promise<void | boolean>} success - whether the setting process was successful
+     * @returns {Promise&lt;void | boolean>} success - whether the setting process was successful
      * (no change due to staying in last page counts as being successful)
      * @example
      * this._viewer.gotoNextPage().then((success) => {
@@ -2822,7 +2905,7 @@ export class DocumentView extends PureComponent {
      * @method
      * @category Page
      * @desc Go to the first page of the document.
-     * @returns {Promise<void | boolean>} success - whether the setting process was successful
+     * @returns {Promise&lt;void | boolean>} success - whether the setting process was successful
      * @example
      * this._viewer.gotoFirstPage().then((success) => {
      *   if (success) {
@@ -2841,7 +2924,7 @@ export class DocumentView extends PureComponent {
      * @method
      * @category Page
      * @desc Go to the last page of the document.
-     * @returns {Promise<void | boolean>} success - whether the setting process was successful
+     * @returns {Promise&lt;void | boolean>} success - whether the setting process was successful
      * @example
      * this._viewer.gotoLastPage().then((success) => {
      *   if (success) {
@@ -2861,7 +2944,7 @@ export class DocumentView extends PureComponent {
      * @category Page
      * @desc Opens a go-to page dialog. If the user inputs a valid page number into the dialog,
      * the viewer will go to that page.
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.showGoToPageView();
      */
@@ -2876,7 +2959,7 @@ export class DocumentView extends PureComponent {
      * @method
      * @category Multi-tab
      * @desc Closes all tabs in a multi-tab environment.
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * // Do this only when DocumentView has multiTabEnabled = true
      * this._viewer.closeAllTabs();
@@ -2892,7 +2975,7 @@ export class DocumentView extends PureComponent {
      * @method
      * @category Multi-tab
      * @desc Opens the tab switcher in a multi-tab environment.
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * // Do this only when DocumentView has multiTabEnabled = true
      * this._viewer.openTabSwitcher();
@@ -2908,7 +2991,7 @@ export class DocumentView extends PureComponent {
      * @method
      * @category Zoom
      * @desc Returns the current zoom scale of current document viewer.
-     * @returns {Promise<void | number>} zoom - current zoom scale in the viewer
+     * @returns {Promise&lt;void | number>} zoom - current zoom scale in the viewer
      * @example
      * this._viewer.getZoom().then((zoom) => {
      *   console.log('Zoom scale of the current document is:', zoom);
@@ -2929,7 +3012,7 @@ export class DocumentView extends PureComponent {
      * standard zoom scale in the current viewer or absolute
      * @param {double} minimum the lower bound of the zoom limit range
      * @param {double} maximum the upper bound of the zoom limit range
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.setZoomLimits(Config.ZoomLimitMode.Absolute, 1.0, 3.5);
      */
@@ -2947,7 +3030,7 @@ export class DocumentView extends PureComponent {
      * @param {double} zoom the zoom ratio to be set
      * @param {int} x the x-coordinate of the zoom center
      * @param {int} y the y-coordinate of the zoom center
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.zoomWithCenter(3.0, 100, 300);
      */
@@ -2965,7 +3048,7 @@ export class DocumentView extends PureComponent {
      * @param {int} pageNumber the page number of the zooming area (1-indexed)
      * @param {object} rect The rectangular area with keys
      * `x1` (left), `y1` (bottom), `y1` (right), `y2` (top). Coordinates are in double
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.zoomToRect(3, {'x1': 1.0, 'y1': 2.0, 'x2': 3.0, 'y2': 4.0});
      */
@@ -2984,7 +3067,7 @@ export class DocumentView extends PureComponent {
      * @param {int} x the x-coordinate of the target coordinate
      * @param {int} y the y-coordinate of the target coordinate
      * @param {boolean} animated whether the transition is animated
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.smartZoom(100, 200, true);
      */
@@ -2999,7 +3082,7 @@ export class DocumentView extends PureComponent {
      * @method
      * @category Scroll
      * @desc Returns the horizontal and vertical scroll position of current document viewer.
-     * @returns {Promise<void | object>}
+     * @returns {Promise&lt;void | object>}
      *
      * Name | Type | Description
      * --- | --- | ---
@@ -3023,7 +3106,7 @@ export class DocumentView extends PureComponent {
      * @method
      * @category Canvas
      * @desc Returns the canvas size of current document viewer.
-     * @returns {Promise<void | object>}
+     * @returns {Promise&lt;void | object>}
      *
      * Name | Type | Description
      * --- | --- | ---
@@ -3047,7 +3130,7 @@ export class DocumentView extends PureComponent {
      * @method
      * @category Page
      * @desc Gets the rotation value of all pages in the current document.
-     * @returns {Promise<void | number>} pageRotation - the rotation degree of all pages,
+     * @returns {Promise&lt;void | number>} pageRotation - the rotation degree of all pages,
      * one of 0, 90, 180 or 270 (clockwise).
      * @example
      * this._viewer.getPageRotation().then((pageRotation) => {
@@ -3065,7 +3148,7 @@ export class DocumentView extends PureComponent {
      * @method
      * @category Page
      * @desc Rotates all pages in the current document in clockwise direction (by 90 degrees).
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.rotateClockwise();
      */
@@ -3080,7 +3163,7 @@ export class DocumentView extends PureComponent {
      * @method
      * @category Page
      * @desc Rotates all pages in the current document in counter-clockwise direction (by 90 degrees).
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.rotateCounterClockwise();
      */
@@ -3098,7 +3181,7 @@ export class DocumentView extends PureComponent {
      * @param {object[]} points list of points, each in the format `{x: number, y: number}`.
      * You could optionally have a `pageNumber: number` in the object.
      * Without specifying, the page system is referring to the current page
-     * @returns {Promise<void | object[]>} convertedPoints - list of converted points in page system,
+     * @returns {Promise&lt;void | object[]>} convertedPoints - list of converted points in page system,
      * each in the format `{x: number, y: number}`. It would be empty if conversion is unsuccessful
      * @example
      * // convert (50, 50) and (100, 100) from screen system to page system,
@@ -3124,7 +3207,7 @@ export class DocumentView extends PureComponent {
      * @param {object[]} points list of points, each in the format `{x: number, y: number}`.
      * You could optionally have a `pageNumber: number` in the object.
      * Without specifying, the page system is referring to the current page
-     * @returns {Promise<void | object[]>} convertedPoints - list of converted points in
+     * @returns {Promise&lt;void | object[]>} convertedPoints - list of converted points in
      * screen system, each in the format `{x: number, y: number}`.
      * It would be empty if conversion is unsuccessful
      * @example
@@ -3149,7 +3232,7 @@ export class DocumentView extends PureComponent {
      * @desc Returns the page number that contains the point on screen.
      * @param {number} x the x-coordinate of the screen point
      * @param {number} y the y-coordinate of the screen point
-     * @returns {Promise<void | number>} pageNumber - the page number of the screen point
+     * @returns {Promise&lt;void | number>} pageNumber - the page number of the screen point
      * @example
      * this._viewer.getPageNumberFromScreenPoint(10.0,50.5).then((pageNumber) => {
      *   console.log('The page number of the screen point is', pageNumber);
@@ -3171,7 +3254,7 @@ export class DocumentView extends PureComponent {
      * @param {number} initialDelay delay before the progressive rendering timer is started,
      * in milliseconds
      * @param {number} interval delay between refreshes, in milliseconds
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * // delay for 10s before start, and refresh every 1s
      * this._viewer.setProgressiveRendering(true, 10000, 1000);
@@ -3190,7 +3273,7 @@ export class DocumentView extends PureComponent {
      * The rasterizer allows a trade-off between rendering quality and rendering speed.
      * This function can be used to indicate the preference between rendering speed and quality.
      * @param {boolean} imageSmoothing whether to enable image smoothing
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.setImageSmoothing(false);
      */
@@ -3208,7 +3291,7 @@ export class DocumentView extends PureComponent {
      * Overprint is a device dependent feature and the results will vary depending
      * on the output color space and supported colorants (i.e. CMYK, CMYK+spot, RGB, etc).
      * @param {Config.OverprintMode} overprint the mode of overprint
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.setOverprint(Config.OverprintMode.Off);
      */
@@ -3264,7 +3347,7 @@ export class DocumentView extends PureComponent {
      * @param {string} searchString the text to search for
      * @param {boolean} matchCase indicates if it is case sensitive
      * @param {boolean} matchWholeWord indicates if it matches an entire word only
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.startSearchMode('PDFTron', false, false);
      */
@@ -3279,7 +3362,7 @@ export class DocumentView extends PureComponent {
      * @method
      * @category Text Selection
      * @desc Finishes the current text search and remove all the highlights.
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.exitSearchMode();
      */
@@ -3300,7 +3383,7 @@ export class DocumentView extends PureComponent {
      * @param {boolean} matchWholeWord indicates if it matches an entire word only
      * @param {boolean} searchUp indicates if it searches upward
      * @param {boolean} regExp indicates if searchString is a regular expression
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.findText('PDFTron', false, false, true, false);
      */
@@ -3315,7 +3398,7 @@ export class DocumentView extends PureComponent {
      * @method
      * @category Text Selection
      * @desc Cancels the current text search thread, if exists.
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.cancelFindText();
      */
@@ -3330,7 +3413,7 @@ export class DocumentView extends PureComponent {
      * @method
      * @category Text Selection
      * @desc Displays a search bar that allows the user to enter and search text within a document.
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.openSearch();
      */
@@ -3346,7 +3429,7 @@ export class DocumentView extends PureComponent {
      * @category Text Selection
      * @desc Returns the text selection on a given page, if any.
      * @param {number} pageNumber the specified page number. It is 1-indexed
-     * @returns {Promise<void | object>} selection - the text selection, in the format
+     * @returns {Promise&lt;void | object>} selection - the text selection, in the format
      * `{html: string, unicode: string, pageNumber: number,
      * quads: [[{x: number, y: number}, {x: number, y: number},
      * {x: number, y: number}, {x: number, y: number}], ...]}`.
@@ -3361,7 +3444,7 @@ export class DocumentView extends PureComponent {
      * this._viewer.getSelection(2).then((selection) => {
      *   if (selection) {
      *     console.log('Found selection on page', selection.pageNumber);
-     *     for (let i = 0; i < selection.quads.length; i ++) {
+     *     for (let i = 0; i &lt; selection.quads.length; i ++) {
      *       const quad = selection.quads[i];
      *       console.log('selection boundary quad', i);
      *       for (const quadPoint of quad) {
@@ -3382,7 +3465,7 @@ export class DocumentView extends PureComponent {
      * @method
      * @category Text Selection
      * @desc Returns whether there is a text selection in the current document.
-     * @returns {Promise<void | boolean>} hasSelection - whether a text selection exists
+     * @returns {Promise&lt;void | boolean>} hasSelection - whether a text selection exists
      * @example
      * this._viewer.hasSelection().then((hasSelection) => {
      *   console.log('There is a selection in the document.');
@@ -3399,7 +3482,7 @@ export class DocumentView extends PureComponent {
      * @method
      * @category Text Selection
      * @desc Clears any text selection in the current document.
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.clearSelection();
      */
@@ -3414,7 +3497,7 @@ export class DocumentView extends PureComponent {
      * @method
      * @category Text Selection
      * @desc Returns the page range (beginning and end) that has text selection on it.
-     * @returns {Promise<void | object>}
+     * @returns {Promise&lt;void | object>}
      *
      * Name | Type | Description
      * --- | --- | ---
@@ -3442,7 +3525,7 @@ export class DocumentView extends PureComponent {
      * @category Text Selection
      * @desc Returns whether there is a text selection on the specified page in the current document.
      * @param {number} pageNumber the specified page number. It is 1-indexed
-     * @returns {Promise<void | boolean>} hasSelection - whether a text selection exists on
+     * @returns {Promise&lt;void | boolean>} hasSelection - whether a text selection exists on
      * the specified page
      * @example
      * this._viewer.hasSelectionOnPage(5).then((hasSelection) => {
@@ -3464,7 +3547,7 @@ export class DocumentView extends PureComponent {
      * @desc Selects the text within the given rectangle region.
      * @param {object} rect the rectangle region in the format of
      * `{x1: number, x2: number, y1: number, y2: number}`
-     * @returns {Promise<void | boolean>} selected - whether there is text selected
+     * @returns {Promise&lt;void | boolean>} selected - whether there is text selected
      * @example
      * this._viewer.selectInRect({x1: 0, y1: 0, x2: 200.5, y2: 200.5}).then((selected) => {
      *         console.log(selected);
@@ -3483,7 +3566,7 @@ export class DocumentView extends PureComponent {
      * @desc Returns whether there is text in given rectangle region.
      * @param {object} rect the rectangle region in the format of
      * `{x1: number, x2: number, y1: number, y2: number}`
-     * @returns {Promise<void | boolean>} hasText - whether there is text in the region
+     * @returns {Promise&lt;void | boolean>} hasText - whether there is text in the region
      * @example
      * this._viewer.isThereTextInRect({x1: 0, y1: 0, x2: 200, y2: 200}).then((hasText) => {
      *         console.log(hasText);
@@ -3500,7 +3583,7 @@ export class DocumentView extends PureComponent {
      * @method
      * @category Text Selection
      * @desc Selects all text on the page.
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.selectAll();
      */
@@ -3588,7 +3671,7 @@ export class DocumentView extends PureComponent {
      * if the value does not refer to a valid page number, the file path will be undefined
      * @param {double} dpi the output image resolution
      * @param {Config.ExportFormat} exportFormat image format to be exported to
-     * @returns {Promise<void | string>} path - the temp path of the created image,
+     * @returns {Promise&lt;void | string>} path - the temp path of the created image,
      * user is responsible for clean up the cache
      * @example
      * this._viewer.exportToImage(1, 92, Config.ExportFormat.BMP).then((path) => {
@@ -3606,7 +3689,7 @@ export class DocumentView extends PureComponent {
      * @method
      * @category Undo/Redo
      * @desc Undo the last modification.
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.undo();
      */
@@ -3621,7 +3704,7 @@ export class DocumentView extends PureComponent {
      * @method
      * @category Undo/Redo
      * @desc Redo the last modification.
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.redo();
      */
@@ -3636,7 +3719,7 @@ export class DocumentView extends PureComponent {
      * @method
      * @category Undo/Redo
      * @desc Checks whether an undo operation can be performed from the current snapshot.
-     * @returns {Promise<void | boolean>} canUndo - whether it is possible to undo from
+     * @returns {Promise&lt;void | boolean>} canUndo - whether it is possible to undo from
      * the current snapshot
      * @example
      * this._viewer.canUndo().then((canUndo) => {
@@ -3654,7 +3737,7 @@ export class DocumentView extends PureComponent {
      * @method
      * @category Undo/Redo
      * @desc Checks whether a redo operation can be perfromed from the current snapshot.
-     * @returns {Promise<void | boolean>} canRedo - whether it is possible to redo from
+     * @returns {Promise&lt;void | boolean>} canRedo - whether it is possible to redo from
      * the current snapshot
      * @example
      * this._viewer.canRedo().then((canRedo) => {
@@ -3671,7 +3754,7 @@ export class DocumentView extends PureComponent {
     /**
      * @method
      * @desc Displays the page crop option. Android only.
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.showCrop();
      */
@@ -3689,7 +3772,7 @@ export class DocumentView extends PureComponent {
      * for the viewer.
      * @param {Config.DefaultToolbars|string} toolbar the toolbar to enable. Should be one of the
      * {@link Config.DefaultToolbars} constants or the `id` of a custom toolbar object.
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.setCurrentToolbar(Config.DefaultToolbars.Insert).then(() => {
      *   // done switching toolbar
@@ -3710,7 +3793,7 @@ export class DocumentView extends PureComponent {
      * On iOS this rect will be the anchor point for the view. The rect is ignored on Android.
      * @param {map} rect The rectangular area in screen co-ordinates with keys
      * `x1` (left), `y1` (bottom), `y1` (right), `y2` (top). Coordinates are in double format.
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.showViewSettings({'x1': 10.0, 'y1': 10.0, 'x2': 20.0, 'y2': 20.0});
      */
@@ -3729,7 +3812,7 @@ export class DocumentView extends PureComponent {
      * Displays a rotate dialog.
      * This dialog allows users to rotate pages of the opened document by 90, 180 and 270 degrees.
      * It also displays a thumbnail of the current page at the selected rotation angle.
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.showRotateDialog();
      */
@@ -3748,7 +3831,7 @@ export class DocumentView extends PureComponent {
      * On iOS this rect will be the anchor point for the view. The rect is ignored on Android.
      * @param {map} rect The rectangular area in screen co-ordinates with keys
      * `x1` (left), `y1` (bottom), `y1` (right), `y2`(top). Coordinates are in double format.
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.showAddPagesView({'x1': 10.0, 'y1': 10.0, 'x2': 20.0, 'y2': 20.0});
      */
@@ -3763,7 +3846,7 @@ export class DocumentView extends PureComponent {
      * @method
      * @category Reflow
      * @desc Returns whether the viewer is currently in reflow mode.
-     * @returns {Promise<void | boolean>} inReflow - whether the viewer is in reflow mode
+     * @returns {Promise&lt;void | boolean>} inReflow - whether the viewer is in reflow mode
      * @example
      * this._viewer.isReflowMode().then((inReflow) => {
      *   console.log(inReflow ? 'in reflow mode' : 'not in reflow mode');
@@ -3780,7 +3863,7 @@ export class DocumentView extends PureComponent {
      * @method
      * @category Reflow
      * @desc Allows the user to programmatically enter and exit reflow mode.
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.toggleReflow();
      */
@@ -3797,7 +3880,7 @@ export class DocumentView extends PureComponent {
      *
      * Requires a source rect in screen co-ordinates.
      * On iOS this rect will be the anchor point for the view. The rect is ignored on Android.
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @param {map} rect The rectangular area in screen co-ordinates with keys
      * `x1` (left), y1 (bottom), `y1` (right), `y2` (top). Coordinates are in double format.
      * @param {boolean} flattening Whether the shared copy should be flattened before sharing.
@@ -3820,7 +3903,7 @@ export class DocumentView extends PureComponent {
      * If {@link DocumentView.thumbnailViewEditingEnabled thumbnailViewEditingEnabled} is true,
      * the user can also manipulate the document, including add, remove, re-arrange, rotate and
      * duplicate pages.
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.openThumbnailsView();
      */
@@ -3835,7 +3918,7 @@ export class DocumentView extends PureComponent {
      * @method
      * @desc Displays the outline tab of the existing list container.
      * If this tab has been disabled, the method does nothing.
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.openOutlineList();
      */
@@ -3851,7 +3934,7 @@ export class DocumentView extends PureComponent {
      * @desc On Android it displays the layers dialog, while on iOS it displays the layers tab
      * of the existing list container. If this tab has been disabled or there are no layers in
      * the document, the method does nothing.
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.openLayersList();
      */
@@ -3865,7 +3948,7 @@ export class DocumentView extends PureComponent {
     /**
      * @method
      * @desc Displays the existing list container. Its current tab will be the one last opened.
-     * @returns {Promise<void>}
+     * @returns {Promise&lt;void>}
      * @example
      * this._viewer.openNavigationLists();
      */
@@ -3880,7 +3963,7 @@ export class DocumentView extends PureComponent {
      * @method
      * @category Signature
      * @desc Gets a list of absolute file paths to PDFs containing the saved signatures.
-     * @returns {Promise<void | Array<string>>} signatures - an array of string containing the
+     * @returns {Promise&lt;void | Array&lt;string>>} signatures - an array of string containing the
      * absolute file paths; if there are no saved signatures, the value is an empty array
      * @example
      * this._viewer.getSavedSignatures().then((signatures) => {
@@ -3904,7 +3987,7 @@ export class DocumentView extends PureComponent {
      * @desc Retrieves the absolute file path to the folder containing the saved signatures.
      * For Android, to get the folder containing the saved signature JPGs, use
      * {@link DocumentView.getSavedSignatureJpgFolder getSavedSignatureJpgFolder}.
-     * @returns {Promise<void | string>} path - the absolute file path to the folder
+     * @returns {Promise&lt;void | string>} path - the absolute file path to the folder
      * @example
      * this._viewer.getSavedSignatureFolder().then((path) => {
      *   if (path != null) {
@@ -3927,7 +4010,7 @@ export class DocumentView extends PureComponent {
      * Retrieves the absolute file path to the folder containing the saved signature JPGs.
      * For Android, to get the folder containing the saved signature PDFs, use
      * {@link DocumentView.getSavedSignatureFolder getSavedSignatureFolder}.
-     * @returns {Promise<void | string>} path - the absolute file path to the folder
+     * @returns {Promise&lt;void | string>} path - the absolute file path to the folder
      * @example
      * this._viewer.getSavedSignatureJpgFolder().then((path) => {
      *   if (path != null) {
@@ -3953,7 +4036,7 @@ export class DocumentView extends PureComponent {
     render() {
         return (
         // @ts-ignore
-        <RCTDocumentView ref={this._setNativeRef} 
+        &lt;RCTDocumentView ref={this._setNativeRef} 
         // @ts-ignore
         style={{ flex: 1 }} 
         // @ts-ignore: Intentionally exclude `onChange` from being exposed as a prop.
@@ -3962,3 +4045,148 @@ export class DocumentView extends PureComponent {
 }
 const name = Platform.OS === 'ios' ? 'RNTPTDocumentView' : 'RCTDocumentView';
 const RCTDocumentView = requireNativeComponent(name);
+</pre>
+    </article>
+</section>
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.7</a>
+	
+		on 2021-12-07T17:57:57+00:00
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+
+    <script src="scripts/toc-collapse.js"></script>
+
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : true,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/docsearch.js@2/dist/cdn/docsearch.min.js"></script>
+<script type="text/javascript">
+	docsearch({
+		apiKey: 'f9d712e43c1978feb1df68f5e63a868c',
+		indexName: 'pdftron',
+		inputSelector: '#search-input',
+		algoliaOptions: { 'facetFilters': ["tags:web"] },
+		debug: false // Set debug to true if you want to inspect the dropdown
+		});
+</script>
+</body>
+</html>
